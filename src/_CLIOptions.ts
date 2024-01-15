@@ -1,3 +1,12 @@
+/**
+ * List of Actions that can be Taken by this CLI Tool
+ */
+export const actions = ["run", "dry-run", "test"] as const;
+export type Action = (typeof actions)[number];
+
+/**
+ * List of Options Passed into Yargs for the CLI Interface
+ */
 export const yargsOptions = {
     cwd: {
         type: "string",
@@ -18,6 +27,13 @@ export const yargsOptions = {
         type: "string",
         alias: "f",
         describe: "configuration path"
+    },
+    action: {
+        type: "string",
+        alias: "a",
+        describe: "what would like to do",
+        choices: actions,
+        default: "test"
     }
 } as const;
 export type YargsOptions = typeof yargsOptions;

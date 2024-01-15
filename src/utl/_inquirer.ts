@@ -1,3 +1,6 @@
+/**
+ * Configure and Return Inquirer
+ */
 import inquirer from "inquirer";
 
 inquirer.registerPrompt("search-list", require("inquirer-search-list"));

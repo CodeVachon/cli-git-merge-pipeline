@@ -9,14 +9,20 @@ export enum COLOR {
 }
 
 /**
- * String Formate the String as Orange
+ * String Format the String as Orange
  *
  * Used in STDOUT
  */
 export const txtOrange = chalk.hex(COLOR.ORANGE);
 /**
- * String Formate the String as Cyan
+ * String Format the String as Cyan
  *
  * Used in STDOUT
  */
 export const txtCyan = chalk.hex(COLOR.CYAN);
+/**
+ * String Format the String as Red
+ *
+ * Used in STDOUT
+ */
+export const txtRed = chalk.redBright;

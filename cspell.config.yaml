@@ -1,0 +1,17 @@
+version: "0.2"
+ignorePaths:
+    [
+        "./config",
+        "./node_modules",
+        "./dist",
+        "./.vscode",
+        "./.git",
+        "./.github",
+        "./.husky",
+        "./.yarn"
+    ]
+dictionaryDefinitions: []
+dictionaries: []
+words: []
+ignoreWords: []
+import: []

@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "JSON Schema Server Definitions",
+  "description": "JSON Schema for the server definitions in the JSON Schema file.",
+  "type": "object",
+  "properties": {
+    "disabled": {
+      "title": "Disable this Config File",
+      "type": "boolean",
+      "default": false
+    },
+    "name": {
+      "title": "Server Name",
+      "type": "string",
+      "minLength": 1
+    },
+    "description": {
+      "title": "Server Description",
+      "type": "string"
+    },
+    "pipeline": {
+      "title": "The Pipeline to Run",
+      "description": "An Array or String or Regular Expressions to define what merges into what",
+      "type": "array",
+      "items": {
+        "title": "Array Path",
+        "description": "String or Regular Expression to Use to find the Branch",
+        "type": "string"
+      },
+      "minItems": 2
+    }
+  },
+  "required": ["name", "pipeline"],
+  "additionalItems": false,
+  "additionalProperties": false
+}

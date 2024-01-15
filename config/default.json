@@ -1,0 +1,6 @@
+{
+  "disabled": true,
+  "name": "Default Pipeline",
+  "description": "Default Pipeline",
+  "pipeline": ["staging", "main"]
+}

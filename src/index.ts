@@ -11,6 +11,7 @@ import {
 } from "./utl";
 import { runWorkflow, testWorkflow } from "./actions";
 import { GitAPI } from "./utl/GitApi";
+import path from "node:path";
 
 const setup = async (): Promise<{ settings: ISettings; workflow: IWorkflowConfig }> => {
     title("Git Branch\nWorkflow");
@@ -30,17 +31,27 @@ const setup = async (): Promise<{ settings: ISettings; workflow: IWorkflowConfig
         action: "run"
     };
 
+    let project_folder;
+    if (process.pkg) {
+        //  It is run as an executable
+        project_folder = path.dirname(process.execPath);
+    } else {
+        //  It is run with nodejs
+        project_folder = __dirname;
+    }
+
+    const configDir = args.config ?? path.resolve(project_folder, "./../");
     /**
      * Look for Workflows
      */
-    const workflows = await new Workflows(args.config).init();
+    const workflows = await new Workflows(configDir).init();
 
     /**
      * Check that I have Valid ready to use Workflows
      */
     const selectableWorkflows = workflows.getList();
     if (selectableWorkflows.length === 0) {
-        throw new Error(`Expected to find enabled workflows at ${args.config}. found 0`);
+        throw new Error(`Expected to find enabled workflows at ${configDir}. found 0`);
     }
 
     /**

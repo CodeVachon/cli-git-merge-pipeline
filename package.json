@@ -26,7 +26,7 @@
     "url": "https://github.com/CodeVachon/cli-git-merge-pipeline/issues"
   },
   "homepage": "https://github.com/CodeVachon/cli-git-merge-pipeline#readme",
-  "bin": "./dist/cli.js",
+  "bin": "./dist/index.js",
   "pkg": {
     "scripts": "dist/**/*.js",
     "assets": [
@@ -34,7 +34,7 @@
       "lib/**/*.js"
     ],
     "targets": [
-      "node16-macos-arm64"
+      "node18-macos-arm64"
     ],
     "outputPath": "pkg"
   },

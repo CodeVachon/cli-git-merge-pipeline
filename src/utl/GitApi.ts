@@ -58,6 +58,15 @@ export class GitAPI {
     }
 
     /**
+     * Call Fetch on CWD
+     *
+     * @returns list of fetched data
+     */
+    public async fetch() {
+        return this.call("fetch");
+    }
+
+    /**
      * Get a List of Git Branches in CWD
      *
      * @returns Array of Branch Names

@@ -132,6 +132,9 @@ const setup = async (): Promise<{ settings: ISettings; workflow: IWorkflowConfig
  */
 setup()
     .then(({ settings, workflow }) => {
+        console.log("");
+        console.log(`${settings.action} ${workflow.name}`);
+        console.log("");
         switch (settings.action) {
             case "dry-run":
                 settings.auto_push = false;

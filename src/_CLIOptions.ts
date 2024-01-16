@@ -32,8 +32,7 @@ export const yargsOptions = {
         type: "string",
         alias: "a",
         describe: "what would like to do",
-        choices: actions,
-        default: "test"
+        choices: actions
     }
 } as const;
 export type YargsOptions = typeof yargsOptions;

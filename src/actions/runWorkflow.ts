@@ -35,7 +35,20 @@ export const runWorkflow = async (
     console.log();
     for (let i = 0; i < steps.length; i++) {
         const step = steps[i];
+
         console.log(`Step ${i + 1}: Merge ${txtCyan(step.source)} into ${txtOrange(step.target)}`);
+        const proceed = await askAQuestion({
+            message: `Merge ${txtCyan(step.source)} into ${txtOrange(step.target)}?`,
+            type: "confirm",
+            default: true
+        });
+
+        if (!proceed) {
+            throw new Error(
+                `User chose not to proceed with merging "${step.source}" into "${step.target}"`
+            );
+        }
+
         await git.checkout(step.source);
         if (await git.branchHasRemote()) {
             await git.pull();

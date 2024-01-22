@@ -7,7 +7,10 @@ import {
     askAQuestion,
     displayError,
     IWorkflowConfig,
-    arrayToStringList
+    arrayToStringList,
+    convertActionToString,
+    txtCyan,
+    txtOrange
 } from "./utl";
 import { runWorkflow, testWorkflow } from "./actions";
 import { GitAPI } from "./utl/GitApi";
@@ -107,7 +110,7 @@ const setup = async (): Promise<{ settings: ISettings; workflow: IWorkflowConfig
             name: "action",
             message: "What would you like to do?",
             type: "list",
-            choices: actions
+            choices: actions.map((v) => ({ name: convertActionToString(v), value: v }))
         });
     } else {
         settings.action = args.action;
@@ -144,7 +147,9 @@ const setup = async (): Promise<{ settings: ISettings; workflow: IWorkflowConfig
 setup()
     .then(({ settings, workflow }) => {
         console.log("");
-        console.log(`${settings.action} ${workflow.name}`);
+        console.log(
+            `${txtCyan(convertActionToString(settings.action))}: ${txtOrange(workflow.name)}`
+        );
         console.log("");
         switch (settings.action) {
             case "dry-run":
